@@ -4,13 +4,14 @@
   "description": "Learning resources for the webpack academy workshop series for 2018",
   "main": "index.js",
   "scripts": {
+    "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack",
     "debug_": "npm run webpack -- -inspect --debug-brk",
     "debug": "node --inspect --inspect-brk ./node_modules/webpack/bin/webpack.js",
-    "dev": "npm run webpack -- --mode development --watch",
-    "prod": "npm run webpack -- --mode production",
-    "dev:debug": "npm run debug -- --mode development",
-    "prod:debug": "npm run debug -- --mode production"
+    "dev": "npm run webpack-dev-server -- --mode=development",
+    "prod": "npm run webpack -- --env.mode production",
+    "dev:debug": "npm run debug -- --env.mode development",
+    "prod:debug": "npm run debug -- --env.mode production"
   },
   "repository": {
     "type": "git",
@@ -38,9 +39,11 @@
     "url-loader": "^2.1.0",
     "webpack": "^4.39.1",
     "webpack-bundle-analyzer": "^3.4.1",
-    "webpack-cli": "^3.3.6",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^4.2.0",
     "webpack-node-externals": "^1.7.2",
-    "workbox-webpack-plugin": "^4.3.1"
+    "workbox-webpack-plugin": "^4.3.1",
+    "yarn": "^1.22.11"
   },
   "dependencies": {
     "d3": "^5.9.7"

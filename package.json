@@ -9,7 +9,7 @@
     "debug_": "npm run webpack -- -inspect --debug-brk",
     "debug": "node --inspect --inspect-brk ./node_modules/webpack/bin/webpack.js",
     "dev": "npm run webpack-dev-server -- --mode=development",
-    "prod": "npm run webpack -- --env.mode production",
+    "prod": "npm run webpack -- --mode=production",
     "dev:debug": "npm run debug -- --env.mode development",
     "prod:debug": "npm run debug -- --env.mode production"
   },
@@ -41,6 +41,7 @@
     "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^4.2.0",
+    "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^1.7.2",
     "workbox-webpack-plugin": "^4.3.1",
     "yarn": "^1.22.11"

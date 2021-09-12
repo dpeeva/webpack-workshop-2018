@@ -1,34 +1,21 @@
-// module.exports = {
-//     mode: 'none'
-// }
-
-// module.exports = () => ({
-//     output: {
-//         filename: 'bundle.js'
-//     }
-// })
-
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const path = require('path')
+const webpackMerge = require('webpack-merge')
 
-module.exports = ({ mode }) => {
-    console.log(mode)
-    return {
-        mode, // using destructuring
-        output: {
-            filename: 'bundle.js'
+const modeConfig = mode => require(`./build-utils/webpack.${mode}`)(mode)
+
+// SETTING DEFAULT VALUES { mode, presets } = { mode: 'production', presets: [] } => NOT WORKING
+module.exports = ({ mode = 'production', presets = [] }) =>
+    webpackMerge.merge(
+        {
+            mode,
+            output: {
+                filename: 'bundle.js'
+            },
+            plugins: [
+                new HtmlWebpackPlugin(),
+                new webpack.ProgressPlugin()
+            ],
         },
-        plugins: [
-            new HtmlWebpackPlugin(),
-            new webpack.ProgressPlugin()
-        ],
-        // devServer: {
-        //     static: {
-        //         directory: path.join(__dirname, 'src'),
-        //     },
-        //     compress: true,
-        //     port: 9000,
-        // },
-    }
-}
+        modeConfig(mode)
+    )
